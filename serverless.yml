@@ -1,0 +1,18 @@
+service: weather-search-api
+
+provider:
+  name: aws
+  region: us-west-2
+  runtime: nodejs14.x
+
+functions:
+  get-weather:
+    handler: get-weather/index.handler
+    description: Get weather from Open Weather Map API
+    events:
+      - http:
+          path: /v1/get-weather
+          method: get
+
+plugins:
+  - serverless-offline
